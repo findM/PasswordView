@@ -23,7 +23,6 @@ extension UIView{
             }
         }
     }
-    
 }
 
 
@@ -37,12 +36,13 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     var count = 6
     /// 线条颜色
     var lineColor: UIColor = UIColor.grayColor()
-    /// 点点颜色
+    /// 点的颜色
     var dotColor: UIColor = UIColor.grayColor()
-    /// 点点大小
+    /// 点的大小
     var dotRadius: CGFloat = 10
     /// 完成输入的回调
     var doneAction: doneActionBlock?
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -54,7 +54,7 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     }
 
 //MARK: private
-    
+    /// 点的tag 用与移除点，从新渲染
     private let dotTag = 1
     
     private lazy var inputeTextField: UITextField = {
@@ -64,7 +64,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
         inputeTextField.hidden = true
         return inputeTextField
     }()
-    
+    /**
+     渲染中间线的方法
+     */
     private func renderLine(bgView:UIView){
         let w:CGFloat = self.width / CGFloat(count)
         let h:CGFloat = self.height
@@ -78,7 +80,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
         }
     }
     
-    
+    /**
+     渲染点的方法
+     */
     private func renderDot(fieldView:UITextField,bgView:UIView){
         let w:CGFloat = self.width / CGFloat(self.count)
         let h:CGFloat = self.height
@@ -99,7 +103,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
             bgView.addSubview(dot)
         }
     }
-    
+    /**
+     监听inputeTextField的改变
+     */
     func fieldViewDidChange(){
         
         self.removeSubViewWithTag(dotTag)
@@ -111,7 +117,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
         }
         
     }
-    
+    /**
+     点击view弹出键盘
+     */
     func tapAction(){
         self.inputeTextField.becomeFirstResponder()
     }
@@ -143,6 +151,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     }
     
 //MARK: UITextFieldDelegate
+    /**
+    限制输入的内容不超过密码的个数
+    */
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         let str = textField.text! + string
