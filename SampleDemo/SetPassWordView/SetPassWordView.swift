@@ -68,8 +68,8 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
      渲染中间线的方法
      */
     private func renderLine(bgView:UIView){
-        let w:CGFloat = self.width / CGFloat(count)
-        let h:CGFloat = self.height
+        let w:CGFloat = self.bounds.size.width / CGFloat(count)
+        let h:CGFloat = self.bounds.size.height
         var x: CGFloat = 0
         for index in 1...count - 1{
             x = CGFloat(index) * w
@@ -84,8 +84,8 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
      渲染点的方法
      */
     private func renderDot(fieldView:UITextField,bgView:UIView){
-        let w:CGFloat = self.width / CGFloat(self.count)
-        let h:CGFloat = self.height
+        let w:CGFloat = self.bounds.size.width / CGFloat(self.count)
+        let h:CGFloat = self.bounds.size.height
         
         var x:CGFloat = (w - dotRadius) / 2
         let y:CGFloat = (h - dotRadius) / 2
@@ -98,7 +98,7 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
             dot.backgroundColor = dotColor
             dot.frame = CGRect(x: x, y: y, width: dotRadius, height: dotRadius)
             x = x + w
-            dot.layer.cornerRadius = dot.width / 2
+            dot.layer.cornerRadius = dot.bounds.size.width / 2
             dot.clipsToBounds = true
             bgView.addSubview(dot)
         }

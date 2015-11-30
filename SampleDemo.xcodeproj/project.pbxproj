@@ -13,7 +13,6 @@
 		95E224241C0BDD050075CC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E224231C0BDD050075CC96 /* Assets.xcassets */; };
 		95E224271C0BDD050075CC96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E224251C0BDD050075CC96 /* LaunchScreen.storyboard */; };
 		95E224301C0BDD9A0075CC96 /* SetPassWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2242F1C0BDD9A0075CC96 /* SetPassWordView.swift */; };
-		95E224341C0C08EB0075CC96 /* UIVIew+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E224331C0C08EB0075CC96 /* UIVIew+Positioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		95E224261C0BDD050075CC96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95E224281C0BDD050075CC96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95E2242F1C0BDD9A0075CC96 /* SetPassWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPassWordView.swift; sourceTree = "<group>"; };
-		95E224331C0C08EB0075CC96 /* UIVIew+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+Positioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 		95E2242E1C0BDD640075CC96 /* SetPassWordView */ = {
 			isa = PBXGroup;
 			children = (
-				95E224331C0C08EB0075CC96 /* UIVIew+Positioning.swift */,
 				95E2242F1C0BDD9A0075CC96 /* SetPassWordView.swift */,
 			);
 			path = SetPassWordView;
@@ -149,7 +146,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95E224341C0C08EB0075CC96 /* UIVIew+Positioning.swift in Sources */,
 				95E2241F1C0BDD050075CC96 /* ViewController.swift in Sources */,
 				95E224301C0BDD9A0075CC96 /* SetPassWordView.swift in Sources */,
 				95E2241D1C0BDD050075CC96 /* AppDelegate.swift in Sources */,
@@ -300,6 +296,7 @@
 				95E2242D1C0BDD050075CC96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
