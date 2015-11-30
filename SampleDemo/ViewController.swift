@@ -23,9 +23,10 @@ class ViewController: UIViewController {
         
         v.dotRadius = 20
         
-//        v.doneAction = {(text) -> () in
-//            print(text)
-//        }
+        v.doneAction = {(text) -> () in
+            print(text)
+            //to do something
+        }
         
         
         self.view.addSubview(v)

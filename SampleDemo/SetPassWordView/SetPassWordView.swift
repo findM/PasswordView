@@ -41,7 +41,7 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     var dotColor: UIColor = UIColor.grayColor()
     /// 点点大小
     var dotRadius: CGFloat = 10
-    
+    /// 完成输入的回调
     var doneAction: doneActionBlock?
     
     override func layoutSubviews() {

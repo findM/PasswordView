@@ -17,14 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-2M-03e" customClass="SetPassWordView" customModule="SampleDemo" customModuleProvider="target">
-                                <rect key="frame" x="54" y="200" width="319" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-2M-03e" customClass="SetPassWordView" customModule="SampleDemo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="177" width="319" height="59"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.72941176470000002" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="0SW-xb-F3s"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PGc-2M-03e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="157" id="Aah-yh-v51"/>
+                            <constraint firstItem="PGc-2M-03e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="I35-d5-4FE"/>
+                            <constraint firstAttribute="trailing" secondItem="PGc-2M-03e" secondAttribute="trailing" constant="75" id="Zj1-bM-PgG"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
