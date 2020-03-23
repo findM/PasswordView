@@ -13,19 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-let v = SetPassWordView(frame: CGRect(x: 10, y: 100, width: 200, height: 40))
-v.count = 4
-v.lineColor = UIColor.blueColor()
-v.dotColor = UIColor.redColor()
-v.dotRadius = 20
-v.doneAction = {(text) -> () in
-    print(text)
-    //to do something
-}
-self.view.addSubview(v)
-        
-        
-        
+        let v = SetPassWordView(frame: CGRect(x: 10, y: 100, width: 200, height: 40))
+        v.count = 4
+        v.lineColor = .blue
+        v.dotColor = .red
+        v.dotRadius = 20
+        v.doneAction = {(text) -> () in
+            print(text)
+            //to do something
+        }
+        self.view.addSubview(v)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

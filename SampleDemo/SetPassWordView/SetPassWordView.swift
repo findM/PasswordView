@@ -35,9 +35,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     /// 密码数量
     var count = 6
     /// 线条颜色
-    var lineColor: UIColor = UIColor.grayColor()
+    var lineColor: UIColor = UIColor.gray
     /// 点的颜色
-    var dotColor: UIColor = UIColor.grayColor()
+    var dotColor: UIColor = UIColor.gray
     /// 点的大小
     var dotRadius: CGFloat = 10
     /// 完成输入的回调
@@ -47,10 +47,10 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.borderColor = lineColor.CGColor
+        self.layer.borderColor = lineColor.cgColor
         
         inputeTextField.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        renderLine(self)
+        renderLine(bgView: self)
     }
 
 //MARK: private
@@ -59,9 +59,9 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     
     private lazy var inputeTextField: UITextField = {
         let inputeTextField = UITextField()
-        inputeTextField.keyboardType = .NumberPad
+        inputeTextField.keyboardType = .numberPad
         inputeTextField.delegate = self
-        inputeTextField.hidden = true
+        inputeTextField.isHidden = true
         return inputeTextField
     }()
     /**
@@ -90,9 +90,10 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
         var x:CGFloat = (w - dotRadius) / 2
         let y:CGFloat = (h - dotRadius) / 2
         
-        let count = fieldView.text?.characters.count < 7 ? fieldView.text?.characters.count: 6
+        var count = fieldView.text?.count ?? 0
+        count = count < 7 ? count : 6
         
-        for var index = 0; index < count; ++index {
+        for _ in 0..<count {
             let dot = UIView()
             dot.tag = dotTag
             dot.backgroundColor = dotColor
@@ -102,25 +103,26 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
             dot.clipsToBounds = true
             bgView.addSubview(dot)
         }
-    }
+            }
     /**
      监听inputeTextField的改变
      */
-    func fieldViewDidChange(){
+    @objc func fieldViewDidChange(){
         
-        self.removeSubViewWithTag(dotTag)
+        removeSubViewWithTag(tag: dotTag)
         
-        renderDot(inputeTextField, bgView: self)
-        
-        if(inputeTextField.text?.characters.count == count && self.doneAction != nil){
-            self.doneAction!(inputeTextField.text!)
+        renderDot(fieldView: inputeTextField, bgView: self)
+        let inputCount = inputeTextField.text?.count ?? 0
+        if let action = self.doneAction{
+            if inputCount == count{
+                action(inputeTextField.text ?? "")
+            }
         }
-        
     }
     /**
      点击view弹出键盘
      */
-    func tapAction(){
+    @objc func tapAction(){
         self.inputeTextField.becomeFirstResponder()
     }
     
@@ -138,27 +140,27 @@ internal class SetPassWordView: UIView ,UITextFieldDelegate{
     
     private func setUpSubViews(){
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = lineColor.CGColor
+        self.layer.borderColor = lineColor.cgColor
         
         
-        let tap = UITapGestureRecognizer(target: self, action: "tapAction")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         self.addGestureRecognizer(tap)
         
         self.addSubview(inputeTextField)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fieldViewDidChange", name: UITextFieldTextDidChangeNotification, object: inputeTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(fieldViewDidChange), name: UITextField.textDidChangeNotification, object: inputeTextField)
     }
     
 //MARK: UITextFieldDelegate
     /**
     限制输入的内容不超过密码的个数
     */
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let str = textField.text! + string
         
-        if(str.characters.count > count){
+        if(str.count > count){
             return false
         }else{
             return true
